@@ -45,7 +45,7 @@ export default function AttendeeItem({ attendee, onReportIssue }) {
 
   return (
     <div
-      className={`flex items-center justify-between p-3 rounded-lg shadow-sm transition duration-150 ${
+      className={`flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 rounded-lg shadow-sm transition duration-150 ${
         isArrived
           ? "bg-green-100 border-l-4 border-green-500"
           : "bg-white border-l-4 border-gray-300"
@@ -53,13 +53,13 @@ export default function AttendeeItem({ attendee, onReportIssue }) {
     >
       <div className="flex-1 min-w-0">
         <p
-          className={`font-semibold text-lg ${
+          className={`font-semibold text-lg sm:text-lg ${
             isArrived ? "text-green-800" : "text-gray-800"
           }`}
         >
           {attendee.full_name}
         </p>
-        <p className="text-sm text-gray-500 truncate">
+        <p className="text-sm text-gray-500 truncate sm:whitespace-normal">
           ID: {attendee.uni_id} | University: {attendee.uni_name}
         </p>
       </div>
@@ -68,11 +68,11 @@ export default function AttendeeItem({ attendee, onReportIssue }) {
         {isArrived ? (
           <span className="text-green-600 font-bold text-sm">ARRIVED</span>
         ) : (
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
             <button
               onClick={handleCheckIn}
               disabled={isCheckingIn}
-              className={`ml-4 px-4 py-1 text-sm font-bold text-white rounded transition duration-150 ${
+              className={`px-3 py-1 sm:px-4 sm:py-2 text-sm font-bold text-white rounded transition duration-150 ${
                 isCheckingIn
                   ? "bg-purple-400 cursor-not-allowed"
                   : "bg-purple-600 hover:bg-purple-700"
@@ -83,7 +83,7 @@ export default function AttendeeItem({ attendee, onReportIssue }) {
 
             <button
               onClick={() => onReportIssue(attendee)}
-              className="ml-2 px-4 py-1 text-xs font-bold text-gray-700 bg-gray-200 rounded hover:bg-gray-300 transition"
+              className="px-4 py-1 text-xs font-bold text-gray-700 bg-gray-200 rounded hover:bg-gray-300 transition"
             >
               Report Issue
             </button>
