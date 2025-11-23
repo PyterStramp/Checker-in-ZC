@@ -37,7 +37,7 @@ async function handler(req, res) {
             'IEEE Membership', 'Status', 'Check-in Time'
         ];
 
-        let csv = headers.join(',') + '\n';
+        let csv = headers.join(';') + '\n';
         
         attendees.forEach(row => {
             const values = [
@@ -50,7 +50,7 @@ async function handler(req, res) {
                 escapeCSV(row.status),
                 escapeCSV(row.check_in_time ? new Date(row.check_in_time).toLocaleString() : 'N/A')
             ];
-            csv += values.join(',') + '\n';
+            csv += values.join(';') + '\n';
         });  
         
         res.setHeader('Content-Type', 'text/csv');
